@@ -1,0 +1,26 @@
+{
+  "name": "Gaming Server",
+  "version": "0.0.1",
+  "authors": [
+    "einarvalur <fizk78@gmail.com>"
+  ],
+  "description": "RESTfull server for simple games",
+  "keywords": [
+    "node",
+    "rest",
+    "express",
+    "javascript"
+  ],
+  "license": "MIT",
+  "homepage": "einar.falkworld.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+	"dependencies": {
+		"breakpoint-sass": "~2.5.0"
+	}
+}

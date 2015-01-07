@@ -1,0 +1,60 @@
+
+
+/**
+ * When user starts a game he/she is prompted with
+ * a username/email login form.
+ */
+form.login-form {
+	position: relative;
+	padding: $gutter;
+	background-color: $color-white;
+	margin: $gutter*2 auto;
+	width: 40%;
+	@extend %drop-shadow;
+
+	.login-form__header{
+		padding: $gutter;
+		margin-left: - $gutter;
+		margin-right: - $gutter;
+		margin-top: - $gutter;
+	}
+	.login-form__name-wrapper,
+	.login-form__email-wrapper {}
+	.login-form__submit-wrapper {
+		text-align: right;
+	}
+
+	input[type=text],
+	input[type=email] {
+		border:none;
+		border-bottom: 1px solid shade($color-gray-light,10%);
+		padding: $gutter/2;
+		display: block;
+		margin-bottom: $gutter;
+		width: 100%;
+		outline: none;
+	}
+	input[type=submit] {
+		@extend %button;
+		background-color: $color-yellow;
+		right: $gutter;
+		bottom: $gutter;
+	}
+
+	&.loading {
+		input[type=submit] {
+			-webkit-animation: rotating 2s linear infinite;
+		}
+	}
+
+	//MOBILE
+	@include breakpoint(max-width $size-mobile){
+		width: auto;
+		margin: $gutter/4;
+	}
+}
+
+
+
+
+

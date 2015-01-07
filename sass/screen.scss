@@ -1,0 +1,64 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "helpers/variables";
+
+@import "compass/reset";
+@import "compass/css3/box-sizing";
+@import "compass/typography/vertical_rhythm";
+
+@import "helpers/fonts";
+
+
+
+
+
+html {
+	background-color: $color-purple;
+}
+
+@include establish-baseline;
+
+*, *:before, *:after {
+	@include box-sizing('border-box');
+}
+body {
+	background-color: $color-blue;
+	margin: $gutter/2;
+	padding: $gutter;
+	font-family: 'Futura';
+}
+
+
+
+	h1 {
+		@include adjust-font-size-to($font-size-alpha,1,$font-size-zeta);
+	}
+	p {
+		@include margin-leader(1,$font-size-alpha);
+		@include margin-trailer(1,$font-size-alpha);
+	}
+	.rest-table{
+		width: 100%;
+		tr{
+			border-bottom: 1px solid tint( $color-blue,15% );
+			td{
+				padding: $gutter/4;
+				vertical-align: top;
+
+			}
+		}
+
+		thead {
+			background-color: tint( $color-blue,15% );
+
+		}
+		tbody {
+			tr:last-child {
+				border: none;
+			}
+		}
+	}
+

@@ -1,0 +1,127 @@
+{% extends "../layout.html" %}
+
+{% block body %}
+<div class="memory">
+	<h1>{{title}}</h1>
+	<p>This REST server simulates the classic <q>Memory Game</q>.</p>
+
+	<p>Start a game by sending a POST request with name and email. You will get an ID back which you use
+		to make additional request. You will also get the size of the board.</p>
+	<p>Now you could draw the board and place all the cards (width&#215;height) in a
+		face-down manor.</p>
+	<p>Get a value of a card by sending a request providing the game ID and x,y coordinates of a card.</p>
+	<p>Allow only two cards to be shown at a time</p>
+	<p>When there is a match, make the pair immutable</p>
+	<p>You can send a request at any time to end the game, you only have to provide the coordinates of
+		what you think are the last two cards, as well as the ID of the game.</p>
+	<p>Once you have ended the game you can not make any more moves</p>
+
+	<table class="rest-table">
+		<thead>
+		<tr>
+			<td>Action</td>
+			<td>Url</td>
+			<td>Methods</td>
+			<td>Params</td>
+			<td>Response</td>
+			<td>200</td>
+			<td>201</td>
+			<td>400</td>
+			<td>404</td>
+			<td>500</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>Create new game</td>
+			<td><code>/memory/</code></td>
+			<td>POST</td>
+			<td>
+				<ul>
+					<li>name</li>
+					<li>email</li>
+				</ul>
+			</td>
+			<td>
+<pre>
+{
+	id: "547c35f2c8317fa423ab9a1c",
+	width: 6,
+	height: 5,
+	begin: "2014-12-01T09:33:38.236Z",
+	ended: false
+}
+</pre>
+			</td>
+			<td>&nbsp;</td>
+			<td>x</td>
+			<td>x</td>
+			<td>&nbsp;</td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>Get game info</td>
+			<td><code>/memory/&lt;game_id&gt;</code></td>
+			<td>GET</td>
+			<td></td>
+			<td>
+<pre>
+{
+	id: "547c35f2c8317fa423ab9a1c",
+	width: 6,
+	height: 5,
+	begin: "2014-12-01T09:33:38.236Z",
+	ended: false
+}
+</pre>
+			</td>
+			<td>x</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>x</td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>Make a guess</td>
+			<td><code>/memory/&lt;game_id&gt;/cards/&lt;int:x&gt;,&lt;int:y&gt;</code></td>
+			<td>GET</td>
+			<td></td>
+			<td>c</td>
+			<td>&nbsp;</td>
+			<td>x</td>
+			<td>x</td>
+			<td>x</td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>End the game</td>
+			<td><code>/memory/&lt;game_id&gt;/end</code></td>
+			<td>POST</td>
+			<td>
+				<ul>
+					<li>x1</li>
+					<li>y1</li>
+					<li>x2</li>
+					<li>y2</li>
+				</ul>
+			</td>
+			<td>
+<pre>
+{
+	"message": "You LOST! You ended too early!",
+	"success": false
+}
+</pre>
+
+			</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>x</td>
+			<td>x</td>
+			<td>x</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+
